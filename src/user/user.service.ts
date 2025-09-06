@@ -1,26 +1,29 @@
 
 import { Injectable } from '@nestjs/common';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dtos/update-user.dto';
+import { CreateUserDto } from './dtos/create-user.dto';
+import { User } from './entities/user.entity';
+import { Role } from 'src/auth/enums/rol.enum';
 
 // This should be a real class/interface representing a user entity
-export type User = any;
 
 @Injectable()
 export class UserService {
 
   
   // simulate database
-  private readonly users = [
+  private readonly users: User[] = [
     {
       userId: 1,
       username: 'john',
       password: 'changeme',
+      roles: [Role.User],
     },
     {
       userId: 2,
       username: 'maria',
       password: 'guess',
+      roles: [Role.Admin],
     },
   ];
 
